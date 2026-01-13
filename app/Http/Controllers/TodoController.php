@@ -32,12 +32,15 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255'
+            'title' => 'required|string|max:255',
         ]);
+
         Todo::create([
-            'title' => $request->title
+            'title' => $request->title,
+            'is_completed' => $request->has('is_completed'), // true if checked, false if not
         ]);
-        return redirect('/todos')->with('success', 'Todo created!');
+        
+        return redirect('/todo')->with('success', 'Todo created!');
     }
 
     /**
@@ -71,7 +74,7 @@ class TodoController extends Controller
             'title' => $request->title,
             'is_completed' => $request->has('is_completed')
         ]);
-        return redirect('/todos')->with('success', 'Todo updated!');
+        return redirect('/todo')->with('success', 'Todo updated!');
     }
     // /**
     //  * Remove the specified resource from storage.
@@ -81,6 +84,6 @@ class TodoController extends Controller
     {
         $todo = Todo::findOrFail($id);
         $todo->delete();
-        return redirect('/todos')->with('success', 'Todo deleted!');
+        return redirect('/todo')->with('success', 'Todo deleted!');
     }
 }

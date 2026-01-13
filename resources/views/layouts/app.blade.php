@@ -9,9 +9,14 @@
 </head>
 
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/todo">Todos</a>
+    <nav class="navbarr">
+        <div class="nav-content">
+        <p style="color:#ffff;">ToDoApp</p>
+        <div class="nav-links">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/todo">Todos</a>
+        </div>
+        </div>
     </nav>
     <main class="container">
         @if (session('success'))
@@ -21,9 +26,10 @@
         @endif
         @yield('content')
     </main>
-    <footer>
+    <footer class="footer">
         <p>&copy; {{ date('Y') }} Todo App</p>
     </footer>
 </body>
+   <script src="{{ asset('js/todos.js') }}"></script>
 
 </html>

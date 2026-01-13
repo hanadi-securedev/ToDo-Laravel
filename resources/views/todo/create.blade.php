@@ -12,6 +12,14 @@
                 <span class="error">{{ $message }}</span>
             @enderror
         </div>
+
+        <div class="form-group">
+            <label for="is_completed">
+                <input type="checkbox" name="is_completed" id="is_completed" value="1" {{ old('is_completed') ? 'checked' : '' }}>
+                Completed
+            </label>
+        </div>
+        
         <button type="submit">Add Todo</button>
         <a href="{{ route('todos.index') }}">Cancel</a>
     </form>

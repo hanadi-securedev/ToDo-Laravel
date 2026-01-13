@@ -8,6 +8,7 @@
             <li class="{{ $todo->is_completed ? 'completed' : '' }}">
                 <span>{{ $todo->title }}</span>
                 <div class="actions">
+                    <a href="{{ route('todo.show', $todo->id) }}">View</a>
                     <a href="{{ route('todo.edit', $todo->id) }}">Edit</a>
                     <form action="{{ route('todo.destroy', $todo->id) }}" method="POST">
                         @csrf
@@ -15,6 +16,7 @@
                         <button type="submit">Delete</button>
                     </form>
                 </div>
+               
             </li>
         @empty
             <li>No todos yet. Create one!</li>
